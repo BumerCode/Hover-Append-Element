@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hover Append Element</title>
+</head>
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            overflow: hidden;
+            height: 100vh;
+        }
+        div {
+            
+            pointer-events: none;
+            position:absolute;
+            border-radius: 50%;
+            background-image: url(../Asian-beauty-casual.jpg);
+            background-size: cover;
+            animation : 4s moveUp linear infinite;
+        }
+        @keyframes moveUp {
+            0%{
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(0, -1000%);
+            }
+        }
+    </style>
+    <script defer ="defer">
+        document.addEventListener("mousemove", function(event){
+        let bubble = document.createElement("div");
+        let size = Math.random() * 100;
+        bubble.style.width = size +"px";
+        bubble.style.height = size +"px";
+        bubble.style.left = (event.clientX - (parseInt(bubble.style.width)/2)) + "px";
+        bubble.style.top = (event.clientY - (parseInt(bubble.style.height)/2)) + "px";
+        document.body.append(bubble);
+
+        setTimeout(function(){
+            bubble.remove();
+        }, 4000);
+        });
+        
+    </script>
+</body>
+</html>
